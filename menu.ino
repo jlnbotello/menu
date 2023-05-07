@@ -64,7 +64,7 @@ void setup() {
 
   menu->AddContainer("/home", home_fstr);
   menu->AddScreen("/home/week", week_fstr, new WeekTimerScreen(services));
-  //menu->AddScreen("/home/time", time_fstr, new TimeScreen(services));  
+  menu->AddScreen("/home/time", time_fstr, new TimeScreen(services));  
   menu->Enter("/home");
 }
 
