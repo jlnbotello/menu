@@ -1,6 +1,0 @@
-{
-    "board": "arduino:avr:uno",
-    "sketch": "menu6.ino",
-    "port": "COM18",
-    "output": "build"
-}
