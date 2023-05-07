@@ -259,18 +259,10 @@ bool WeekTimerScreen::enter()
 
 bool WeekTimerScreen::exit()
 {
+  Screen::exit();
   if(s0) s0->Unlock();
   if(s1) s1->Unlock();
-
-  if(m_menu)
-  {
-    delete(m_menu);
-    m_menu = nullptr;
-    m_screen = nullptr;
-  }
-
-  m_max_lines = 0;  
-
+  
   return true;
 }
 

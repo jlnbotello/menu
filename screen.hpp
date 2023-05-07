@@ -47,10 +47,21 @@ public:
   Screen(Services *s) : m_services(s){};
   virtual ~Screen() = default;
 
+
   virtual bool onEvent(Event event) = 0;    
  
   virtual bool enter() = 0;
-  virtual bool exit() = 0;
+  virtual bool exit()
+  {
+    if(m_menu)
+    {
+      delete(m_menu);
+      m_menu = nullptr;
+      m_screen = nullptr;
+    }
+    m_max_lines = 0;   
+  }
+  
   virtual bool update() {};
   
 
