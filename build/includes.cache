@@ -1,0 +1,122 @@
+[
+  {
+    "Sourcefile": null,
+    "Include": "",
+    "Includepath": "C:\\Users\\jlnbo\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.6\\cores\\arduino"
+  },
+  {
+    "Sourcefile": null,
+    "Include": "",
+    "Includepath": "C:\\Users\\jlnbo\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.6\\variants\\standard"
+  },
+  {
+    "Sourcefile": "C:\\Users\\jlnbo\\repos\\pet_feeder\\menu6\\build\\sketch\\menu6.ino.cpp",
+    "Include": "LiquidMenu.h",
+    "Includepath": "C:\\Users\\jlnbo\\Documents\\Arduino\\libraries\\LiquidMenu\\src"
+  },
+  {
+    "Sourcefile": "C:\\Users\\jlnbo\\repos\\pet_feeder\\menu6\\build\\sketch\\menu6.ino.cpp",
+    "Include": "LiquidCrystal_I2C.h",
+    "Includepath": "C:\\Users\\jlnbo\\Documents\\Arduino\\libraries\\LiquidCrystal_I2C"
+  },
+  {
+    "Sourcefile": "C:\\Users\\jlnbo\\repos\\pet_feeder\\menu6\\build\\sketch\\menu6.ino.cpp",
+    "Include": "NoDelay.h",
+    "Includepath": "C:\\Users\\jlnbo\\Documents\\Arduino\\libraries\\NoDelay\\src"
+  },
+  {
+    "Sourcefile": "C:\\Users\\jlnbo\\repos\\pet_feeder\\menu6\\build\\sketch\\menu6.ino.cpp",
+    "Include": "MemoryFree.h",
+    "Includepath": "C:\\Users\\jlnbo\\Documents\\Arduino\\libraries\\Arduino-MemoryFree-master"
+  },
+  {
+    "Sourcefile": "C:\\Users\\jlnbo\\repos\\pet_feeder\\menu6\\build\\sketch\\menu6.ino.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\jlnbo\\repos\\pet_feeder\\menu6\\build\\sketch\\custom_char_defs.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\jlnbo\\repos\\pet_feeder\\menu6\\build\\sketch\\custom_chars.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\jlnbo\\repos\\pet_feeder\\menu6\\build\\sketch\\menu_controller.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\jlnbo\\repos\\pet_feeder\\menu6\\build\\sketch\\menu_time.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\jlnbo\\repos\\pet_feeder\\menu6\\build\\sketch\\menu_week_timer.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\jlnbo\\Documents\\Arduino\\libraries\\LiquidMenu\\src\\LiquidLine.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\jlnbo\\Documents\\Arduino\\libraries\\LiquidMenu\\src\\LiquidMenu.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\jlnbo\\Documents\\Arduino\\libraries\\LiquidMenu\\src\\LiquidScreen.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\jlnbo\\Documents\\Arduino\\libraries\\LiquidMenu\\src\\LiquidSystem.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\jlnbo\\Documents\\Arduino\\libraries\\LiquidMenu\\src\\recognizeType.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\jlnbo\\Documents\\Arduino\\libraries\\LiquidCrystal_I2C\\LiquidCrystal_I2C.cpp",
+    "Include": "Wire.h",
+    "Includepath": "C:\\Users\\jlnbo\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.6\\libraries\\Wire\\src"
+  },
+  {
+    "Sourcefile": "C:\\Users\\jlnbo\\Documents\\Arduino\\libraries\\LiquidCrystal_I2C\\LiquidCrystal_I2C.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\jlnbo\\Documents\\Arduino\\libraries\\NoDelay\\src\\NoDelay.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\jlnbo\\Documents\\Arduino\\libraries\\Arduino-MemoryFree-master\\MemoryFree.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\jlnbo\\Documents\\Arduino\\libraries\\Arduino-MemoryFree-master\\pgmStrToRAM.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\jlnbo\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.6\\libraries\\Wire\\src\\Wire.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\jlnbo\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.6\\libraries\\Wire\\src\\utility\\twi.c",
+    "Include": "",
+    "Includepath": null
+  }
+]

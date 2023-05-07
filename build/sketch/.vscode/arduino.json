@@ -1,0 +1,7 @@
+#line 1 "C:\\Users\\jlnbo\\repos\\pet_feeder\\menu6\\.vscode\\arduino.json"
+{
+    "board": "arduino:avr:uno",
+    "sketch": "menu6.ino",
+    "port": "COM18",
+    "output": "build"
+}
