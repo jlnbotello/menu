@@ -70,7 +70,7 @@ MenuController::MenuController(DisplayClass &lcd)
   //m_services.pMenu->update();
 }
 
-void MenuController::AddScreen(const char* url, const char* name, Screen * screen)
+void MenuController::AddScreen(const char* url, const char* name, ScreenFactoryInterface * f)
 {
   // if(!screen)
   // {
@@ -87,13 +87,13 @@ void MenuController::AddScreen(const char* url, const char* name, Screen * scree
 
   //strncpy(screen->name, name, MAX_TITLE_LEN);
 
-  if(url && name && screen)
+  if(url && name && f)
   {
     MenuNode * pNode = calloc(1, sizeof(MenuNode));
     if(pNode)
     {
       pNode->name = name;
-      pNode->pScreen = screen;
+      pNode->factory = f;
       m_services.pNavSys->addNode(url, pNode);
     }
   }
@@ -111,7 +111,7 @@ void MenuController::AddContainer(const char* url, const char* name)
     if(pNode)
     {
       pNode->name = name;
-      pNode->pScreen = m_container;
+      //pNode->factory = m_container; //FIXME
       m_services.pNavSys->addNode(url, pNode);
     }
   }
@@ -136,7 +136,7 @@ bool MenuController::Enter(const char* url)
     return false;
   }
 
-  node->data->pScreen->enter();
+  m_current_screen = node->data->factory->createScreen(&m_services);
 
   // ScreenHandle_t * screen_h = node->value;
   // LiquidScreen * pScreenController = nullptr;
@@ -176,6 +176,11 @@ bool MenuController::Enter(const char* url)
 
 bool MenuController::Back()
 {
+  delete(m_current_screen);
+
+  Node<MenuNode> * node = m_services.pNavSys->navigateBack();
+
+  m_current_screen = node->data->factory->createScreen(&m_services);
   // char prev_screen_url[MAX_URL_SIZE];
   // strncpy(prev_screen_url, m_active_url, MAX_URL_SIZE);
   

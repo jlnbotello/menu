@@ -1,6 +1,6 @@
 #ifndef __MENU_CONTROLLER_H__
 #define __MENU_CONTROLLER_H__
-#include "screen.hpp"
+#include "screen_factory.hpp"
 #include "custom_char_defs.hpp"
 #include "custom_chars.hpp"
 
@@ -46,7 +46,7 @@ class MenuController
 {
 public:
   MenuController(DisplayClass &lcd);
-  void AddScreen(const char* url, const char* name, Screen * screen);
+  void AddScreen(const char* url, const char* name, ScreenFactoryInterface * screen);
   void AddContainer(const char* url, const char* name);
   Screen::Services * GetServices();
   bool Enter(const char* url);
@@ -68,6 +68,7 @@ private:
   //DisplayClass &m_lcd;
   Screen::Services m_services;
   ContainerScreen * m_container;
+  Screen * m_current_screen;
   // EventHandler m_evh;
   // Screen_t m_screens[2];
   // uint8_t m_active_screen = 0;

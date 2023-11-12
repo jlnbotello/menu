@@ -16,7 +16,7 @@
 
 
 /*---------------------------------[PUBLIC FUNCTIONS]-------------------------*/
-TimeScreen::TimeScreen(Services *s) : Screen(s)
+TimeScreen::TimeScreen(Services *s, TimeModel *c) : Screen(s)
 {
 
 }

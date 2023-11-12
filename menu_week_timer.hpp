@@ -2,15 +2,12 @@
 #define __MENU_WEEK_TIMER__
 
 #include "screen.hpp"
-
-//extern uint8_t tue;
-
-//ScreenHandle_t *menu_week_timer(ScreenServices_t *srvs);
+#include "model_week.hpp"
 
 class WeekTimerScreen : public Screen
 {
 public:  
-  WeekTimerScreen(Services *s);
+  WeekTimerScreen(Services *s, WeekModel * w);
   ~WeekTimerScreen() override;
   bool enter();
   bool exit();
@@ -18,6 +15,8 @@ public:
   bool onEvent(Event event);
 
 private:
+  WeekUI * ui;
+
   bool ev_cw_step();
   bool ev_ccw_step();
   bool ev_confirm_pressed();

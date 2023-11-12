@@ -2,11 +2,12 @@
 #define __MENU_TIME_HPP__
 
 #include "screen.hpp"
+#include "model_time.hpp"
 
 class TimeScreen : public Screen
 {
 public:  
-  TimeScreen(Services *s);
+  TimeScreen(Services *s, TimeModel *c);
   ~TimeScreen() override;
   bool enter();
   bool exit();

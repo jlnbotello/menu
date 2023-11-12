@@ -6,6 +6,7 @@
 #include <LiquidMenu.h>
 #include "custom_chars.hpp"
 #include "navigator.hpp"
+#include "screen_factory.hpp"
 
 // #define MAX_TITLE_LEN 20
 
@@ -21,7 +22,7 @@ class Screen;
 typedef struct
 {
   const char * name;
-  Screen * pScreen;
+  ScreenFactoryInterface * factory;
 } MenuNode;
 
 class Screen
@@ -44,7 +45,12 @@ public:
     DisplayClass *pLcd;
   } Services;
 
-  Screen(Services *s) : m_services(s){};
+  Screen(Services *s) : m_services(s)
+  {
+    m_menu = new LiquidMenu(*(m_services->pLcd));
+    m_screen = new LiquidScreen();
+    m_menu->add_screen(*m_screen);
+  };
   virtual ~Screen() = default;
 
 
@@ -57,13 +63,19 @@ public:
     {
       delete(m_menu);
       m_menu = nullptr;
-      m_screen = nullptr;
     }
-    m_max_lines = 0;   
+    //m_max_lines = 0;   
   }
   
-  virtual bool update() {};
+  void update() 
+  {
+    m_menu->update();
+  };
   
+  void addLine(LiquidLine * line)
+  {
+    m_screen->add_line(*line);
+  }
 
   // virtual bool ev_cw_step() {return false;};
   // virtual bool ev_ccw_step() {return false;};
@@ -74,9 +86,10 @@ public:
   Services *m_services;
 
   LiquidMenu * m_menu;
+  private:
   LiquidScreen * m_screen;
-  LiquidLine ** m_lines;
-  int m_max_lines = 0;
+  //LiquidLine ** m_lines;
+  //int m_max_lines = 0;
 };
 
 

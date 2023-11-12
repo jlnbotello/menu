@@ -6,6 +6,7 @@
 #include "menu_week_timer.hpp"
 #include "menu_time.hpp"
 #include "MemoryFree.h"
+#include "screen_factory.hpp"
 
 
 #define LCD_ADDRESS   0x3F
@@ -21,9 +22,19 @@ static MenuController * menu;
 
 static Selector selector(CLK_PIN, DT_PIN, SW_PIN);
 
+
+TimeModel timer1;
+TimeModel timer2;
+
+ScreenFactory<TimeModel> t1sf(&timer1);
+ScreenFactory<TimeModel> t2sf(&timer2);
+
+
 const char home_fstr[] PROGMEM = "HOME";
 const char week_fstr[] PROGMEM = "WEEK";
 const char time_fstr[] PROGMEM = "TIME";
+const char timer1_fstr[] PROGMEM = "TIMER 1";
+const char timer2_fstr[] PROGMEM = "TIMER 2";
 
 void ccw_event_cb();
 void cw_event_cb();
@@ -63,8 +74,13 @@ void setup() {
   Screen::Services * services = menu->GetServices();
 
   menu->AddContainer("/home", home_fstr);
-  menu->AddScreen("/home/week", week_fstr, new WeekTimerScreen(services));
-  menu->AddScreen("/home/time", time_fstr, new TimeScreen(services));  
+  menu->AddContainer("/home/t1", timer1_fstr);
+  //menu->AddScreen("/home/t1/week", week_fstr, new WeekTimerScreen(services));
+  menu->AddScreen("/home/t1/time", time_fstr, (ScreenFactoryInterface *) &t1sf);
+  menu->AddContainer("/home/t2", timer2_fstr);  
+  // menu->AddScreen("/home/t2/week", week_fstr, new WeekTimerScreen(services));
+  menu->AddScreen("/home/t2/time", time_fstr, (ScreenFactoryInterface *) &t2sf); 
+
   menu->Enter("/home");
 }
 
