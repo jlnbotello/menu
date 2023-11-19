@@ -1,11 +1,9 @@
 #include <Arduino.h>
 #include <avr/pgmspace.h>
+#include "MemoryFree.h"
+
 #include "menu_controller.hpp"
 #include "selector.hpp"
-
-#include "menu_week_timer.hpp"
-#include "menu_time.hpp"
-#include "MemoryFree.h"
 #include "screen_factory.hpp"
 
 
@@ -23,11 +21,11 @@ static MenuController * menu;
 static Selector selector(CLK_PIN, DT_PIN, SW_PIN);
 
 
-TimeModel timer1;
-TimeModel timer2;
+TimeModel timer1(10, 55);
+//TimeModel timer2(90, 10);
 
 ScreenFactory<TimeModel> t1sf(&timer1);
-ScreenFactory<TimeModel> t2sf(&timer2);
+//ScreenFactory<TimeModel> t2sf(&timer2);
 
 
 const char home_fstr[] PROGMEM = "HOME";
@@ -71,43 +69,46 @@ void setup() {
 
   print_free_memory(); 
 
-  Screen::Services * services = menu->GetServices();
-
   menu->AddContainer("/home", home_fstr);
-  menu->AddContainer("/home/t1", timer1_fstr);
+  //menu->AddContainer("/home/t1", timer1_fstr);
   //menu->AddScreen("/home/t1/week", week_fstr, new WeekTimerScreen(services));
-  menu->AddScreen("/home/t1/time", time_fstr, (ScreenFactoryInterface *) &t1sf);
-  menu->AddContainer("/home/t2", timer2_fstr);  
-  // menu->AddScreen("/home/t2/week", week_fstr, new WeekTimerScreen(services));
-  menu->AddScreen("/home/t2/time", time_fstr, (ScreenFactoryInterface *) &t2sf); 
+  menu->AddScreen("/home/t1", timer1_fstr, t1sf.factory());
+  //menu->AddContainer("/home/t2", timer2_fstr);  
+  //menu->AddScreen("/home/t2/week", week_fstr, new WeekTimerScreen(services));
+  //menu->AddScreen("/home/t2", timer2_fstr, t2sf.factory()); 
+
+  print_free_memory(); 
+
 
   menu->Enter("/home");
+  print_free_memory(); 
 }
 
 void loop()
 {
   selector.run();
-  menu->TriggerEvent(Screen::EV_UPDATE_LOOP);
+  timer1.update();
+  menu->TriggerEvent(Event::EV_UPDATE_LOOP);
 }
 
 void ccw_event_cb()
 {
-  menu->TriggerEvent(Screen::EV_CCW_STEP);
+  menu->TriggerEvent(Event::EV_CCW_STEP);
 }
 
 void cw_event_cb()
 {
-  menu->TriggerEvent(Screen::EV_CW_STEP);
+  menu->TriggerEvent(Event::EV_CW_STEP);
 }
 
 void sw_sp_event_cb()
 {
-  menu->TriggerEvent(Screen::EV_CONFIRM_PRESSED);
   print_free_memory();
+  menu->TriggerEvent(Event::EV_CONFIRM_PRESSED);  
 }
 
 void sw_lp_event_cb()
 {
-  menu->TriggerEvent(Screen::EV_CANCEL_PRESSED);
   print_free_memory();
+  menu->TriggerEvent(Event::EV_CANCEL_PRESSED);  
 }

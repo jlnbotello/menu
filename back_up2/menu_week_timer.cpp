@@ -52,7 +52,7 @@ private:
     Options options;
 };
 
-WeekUI::WeekUI(Service* s, WeekModel& week, int cursor) : weekModel(week), cursor(cursor), lastCursor(0) {
+WeekUI::WeekUI(Services* s, WeekModel& week, int cursor) : weekModel(week), cursor(cursor), lastCursor(0) {
     selectChar = SET_CCHAR_SLOT(s0, CC_CHECK);
     cursorChar = SET_CCHAR_SLOT(s1, CC_ALIEN);
 }
@@ -116,9 +116,9 @@ const WeekUI::Options& WeekUI::getOptions() const {
 
 /*---------------------------------[PUBLIC FUNCTIONS]-------------------------*/
 
-WeekTimerScreen::WeekTimerScreen(Services *s, WeekModel *w) : Screen(s)
+WeekTimerScreen::WeekTimerScreen(MenuController &c, WeekModel &w) : Screen(c)
 {
-  ui = new WeekUI(w, s, 0);
+  ui = new WeekUI(c.GetServices(), w, 0);
   WeekUI::Options opt = ui->getOptions();
 
   LiquidLine * pTitleLine = new LiquidLine(0, 0, "WEEK");

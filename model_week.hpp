@@ -1,3 +1,6 @@
+#ifndef __MODEL_WEEK_HPP__
+#define __MODEL_WEEK_HPP__
+
 #include "stdint.h"
 
 class WeekModel {
@@ -24,3 +27,5 @@ private:
 
     uint8_t getDayMask(Day day);
 };
+
+#endif /* MODEL_WEEK_HPP */

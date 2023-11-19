@@ -4,10 +4,12 @@
 #include "screen.hpp"
 #include "model_week.hpp"
 
+class WeekUI;
+
 class WeekTimerScreen : public Screen
 {
 public:  
-  WeekTimerScreen(Services *s, WeekModel * w);
+  WeekTimerScreen(MenuController &c, WeekModel &w);
   ~WeekTimerScreen() override;
   bool enter();
   bool exit();

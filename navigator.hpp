@@ -1,3 +1,8 @@
+#ifndef __NAVIGATOR_HPP__
+#define __NAVIGATOR_HPP__
+
+#include <Arduino.h>
+
 #define MAX_URL_SIZE 32
 
 template<typename T>
@@ -263,3 +268,5 @@ int main() {
     return 0;
 }
 */
+
+#endif /* __NAVIGATOR_HPP__ */

@@ -1,3 +1,6 @@
+#ifndef __SELECTOR_HPP__
+#define __SELECTOR_HPP__
+
 #include <Arduino.h>
 #include "stdint.h"
 #include "debouncer.hpp"
@@ -131,3 +134,5 @@ private:
   noDelay m_timer;
   Debouncer m_debouncer;
 };
+
+#endif /* __SELECTOR_HPP__ */

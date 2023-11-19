@@ -7,10 +7,7 @@
 class TimeScreen : public Screen
 {
 public:  
-  TimeScreen(Services *s, TimeModel *c);
-  ~TimeScreen() override;
-  bool enter();
-  bool exit();
+  TimeScreen(MenuController &c, TimeModel &m);
   bool onEvent(Event event);
 
 private:
@@ -18,6 +15,11 @@ private:
   bool ev_ccw_step();
   bool ev_confirm_pressed();
   bool ev_cancel_pressed();
+
+  TimeModel &timer;
+
+  char on  = ' ';
+  char off = 'x';
 
   uint8_t hour = 0;
   uint8_t hour_d1 = 0;
@@ -32,7 +34,8 @@ private:
   {
     SELECT_HH,
     SELECT_MM,
-    SELECT_SS
+    SELECT_SS,
+    SELECT_ON_OFF
   };
   uint8_t selector = SELECT_HH;
 };

@@ -1,17 +1,25 @@
-#include "screen.hpp"
-#include "menu_week_timer.hpp"
+#ifndef __SCREEN_FACTORY_HPP__
+#define __SCREEN_FACTORY_HPP__
+
 #include "menu_time.hpp"
+#include "menu_container.hpp"
+
+
 
 class ScreenWrapper {
     Screen* screen;
 
 public:
-    ScreenWrapper(Screen::Services* services, WeekModel* controller) {
-        screen = new WeekTimerScreen(services, controller);
+    ScreenWrapper(MenuController &c, void* controller) {
+        screen = new ContainerScreen(c);
     }
 
-    ScreenWrapper(Screen::Services* services, TimeModel* controller) {
-        screen = new TimeScreen(services, controller); //FIXME: Modify constructor
+    //ScreenWrapper(Services* services, WeekModel* controller) {
+    //    screen = new WeekTimerScreen(services, controller);
+    //}
+
+    ScreenWrapper(MenuController &c, TimeModel *m) {
+        screen = new TimeScreen(c, *m);
     }
 
     /* Add more constuctor here */
@@ -24,18 +32,25 @@ public:
 class ScreenFactoryInterface
 {
 public:
-    virtual Screen* createScreen(Screen::Services * services) = 0;
+    virtual Screen* createScreen(MenuController &c) = 0;
 };
 
 template <typename T>
 class ScreenFactory: public ScreenFactoryInterface{
-    T* controller;
+    T* model = nullptr;
 public:
-    ScreenFactory(T * c): controller(c){};
+    ScreenFactory(T * m): model(m){};
     
-    Screen* createScreen(Screen::Services * services) override {
-        T* dependency = static_cast<T*>(controller);
-        ScreenWrapper screenWrapper(services, controller);
-        return screenWrapper.getScreen();
+    Screen* createScreen(MenuController &c) override 
+    {
+        ScreenWrapper wrapper(c, model);
+        return wrapper.getScreen();
+    }
+
+    ScreenFactoryInterface * factory()
+    {
+        return (ScreenFactoryInterface *) this;
     }
 };
+
+#endif /* __SCREEN_FACTORY_HPP__ */
