@@ -50,17 +50,15 @@ bool TimeScreen::onEvent(Event event)
   case EV_UPDATE_LOOP:
     if (timer.is_enabled())
     {
-      //unsigned long millis = timer.getRemaining();
-      unsigned long milliss = 1000 * (3600*0 + 29*60 + 11);
-      unsigned long seconds = milliss / 1000;
-      unsigned long hh = (seconds) / 3600;
-      int mm = (seconds - 3600 * hh) / 60;
-      int ss = seconds - 3600 * hh - 60 * mm;
+      unsigned long millis = timer.getRemaining();
+      //unsigned long milliss = 1000 * (3600*0 + 29*60 + 11);
+      unsigned long secs = millis / 1000;
+      unsigned long hh = (secs) / 3600;
+      unsigned long mm = (secs - 3600 * hh) / 60;
+      unsigned long ss = secs - 3600 * hh - 60 * mm;
 
-      if (sec != ss)
+      if (seconds != ss)
       {
-        Serial.print("Seconds: ");
-        Serial.println(seconds);
         Serial.print("Time: ");
         Serial.print(hh);
         Serial.print(":");
@@ -69,15 +67,15 @@ bool TimeScreen::onEvent(Event event)
         Serial.println(ss);
         
         hour = hh;
-        min = mm;
-        sec = ss;
+        minutes = mm;
+        seconds = ss;
 
         hour_d1 = hour / 10;
         hour_d2 = hour % 10;
-        min_d1 = min / 10;
-        min_d2 = min % 10;
-        sec_d1 = sec / 10;
-        sec_d2 = sec % 10;
+        min_d1 = minutes / 10;
+        min_d2 = minutes % 10;
+        sec_d1 = seconds / 10;
+        sec_d2 = seconds % 10;
 
         update();
       }
@@ -103,14 +101,14 @@ bool TimeScreen::ev_cw_step()
     hour_d2 = hour % 10;
     break;
   case SELECT_MM:
-    min = (min == 59) ? (0) : (++min);
-    min_d1 = min / 10;
-    min_d2 = min % 10;
+    minutes = (minutes == 59) ? (0) : (++minutes);
+    min_d1 = minutes / 10;
+    min_d2 = minutes % 10;
     break;
   case SELECT_SS:
-    sec = (sec == 59) ? (0) : (++sec);
-    sec_d1 = sec / 10;
-    sec_d2 = sec % 10;
+    seconds = (seconds == 59) ? (0) : (++seconds);
+    sec_d1 = seconds / 10;
+    sec_d2 = seconds % 10;
     break;
   case SELECT_ON_OFF:
     tmp = on;
@@ -138,14 +136,14 @@ bool TimeScreen::ev_ccw_step()
     hour_d2 = hour % 10;
     break;
   case SELECT_MM:
-    min = (min == 0) ? (59) : (--min);
-    min_d1 = min / 10;
-    min_d2 = min % 10;
+    minutes = (minutes == 0) ? (59) : (--minutes);
+    min_d1 = minutes / 10;
+    min_d2 = minutes % 10;
     break;
   case SELECT_SS:
-    sec = (sec == 0) ? (59) : (--sec);
-    sec_d1 = sec / 10;
-    sec_d2 = sec % 10;
+    seconds = (seconds == 0) ? (59) : (--seconds);
+    sec_d1 = seconds / 10;
+    sec_d2 = seconds % 10;
     break;
   case SELECT_ON_OFF:
     tmp = on;
@@ -166,13 +164,13 @@ bool TimeScreen::ev_confirm_pressed()
   {
     if (on == 'x')
     {
-      timer.start(HH_MM_SS_TO_MS(hour, this->min, sec), nullptr);
+      timer.start(HH_MM_SS_TO_MS(hour, minutes, seconds), nullptr);
     }
     else
     {
       timer.stop();
       timer.reset();
-      hour = min = sec = 0;
+      hour = minutes = seconds = 0;
     }
   }
   selector = (selector < SELECT_ON_OFF) ? selector + 1 : 0;

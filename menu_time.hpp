@@ -24,10 +24,10 @@ private:
   uint8_t hour = 0;
   uint8_t hour_d1 = 0;
   uint8_t hour_d2 = 0;
-  uint8_t min = 0;
+  uint8_t minutes = 0;
   uint8_t min_d1 = 0;
   uint8_t min_d2 = 0;
-  uint8_t sec = 0;
+  uint8_t seconds = 0;
   uint8_t sec_d1 = 0;
   uint8_t sec_d2 = 0;
   enum

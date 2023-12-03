@@ -3,7 +3,7 @@
 
 #include <Arduino.h>
 
-#define HH_MM_SS_TO_MS(hh, mm, ss) ((3600*hh + 60*mm + ss) * 1000)
+#define HH_MM_SS_TO_MS(hh, mm, ss) ((3600*hh + 60*mm + ss) * (unsigned long) 1000)
 
 class TimeModel 
 {
@@ -11,9 +11,12 @@ public:
     TimeModel(int m, int s): minutes(m), seconds(s) {};
 
     void start(unsigned long timeout, void (*callback)()) {
-        remaning = timeout;
         timeoutMillis = timeout;
+        Serial.print("timeout: ");
+        Serial.println(timeout);
         startTime = millis();
+        Serial.print("starttime: ");
+        Serial.println(startTime);
         callbackFunction = callback;
         active = true;
     }
@@ -37,9 +40,7 @@ public:
     void update() {
         if (active) 
         {
-            unsigned long elapsed = millis() - startTime;
-            remaning = timeoutMillis - elapsed;
-            if(elapsed >= timeoutMillis)
+            if(millis() >= (startTime + timeoutMillis))
             {
                 stop();
                 if (callbackFunction) {
@@ -51,7 +52,8 @@ public:
 
     unsigned long getRemaining()
     {
-        return remaning;
+        remaning = (startTime + timeoutMillis) - millis();
+        return remaning > 0 ? remaning : 0 ;
     }
 
 
