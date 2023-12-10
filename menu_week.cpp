@@ -213,7 +213,6 @@ WeekTimerScreen::WeekTimerScreen(MenuController &c, WeekModel &w) : Screen(c)
 
 WeekTimerScreen::~WeekTimerScreen()
 {
-    Screen::~Screen(); // delete LiquidLine instances
     delete (ui);
 }
 
