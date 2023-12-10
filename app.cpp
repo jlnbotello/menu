@@ -76,10 +76,6 @@ void App_setup()
 
     App_printFreeMemory();
 
-    pinMode(CLK_PIN, INPUT);
-    pinMode(DT_PIN, INPUT);
-    pinMode(SW_PIN, INPUT_PULLUP);
-
     selector.addCallback(Selector::CbType::CCW_CB, ccw_event_cb);
     selector.addCallback(Selector::CbType::CW_CB, cw_event_cb);
     selector.addCallback(Selector::CbType::SW_SP_CB, sw_sp_event_cb);

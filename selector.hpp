@@ -37,7 +37,9 @@ public:
   Selector(int clk, int dt, int sw)
   : m_clk_pin(clk), m_dt_pin(dt), m_sw_pin(sw), m_timer(SHORT_PRESS_TIMEOUT)
   {
-
+    pinMode(m_clk_pin, INPUT);
+    pinMode(m_dt_pin, INPUT);
+    pinMode(m_sw_pin, INPUT_PULLUP);
   };
   
   void addCallback(CbType type, Cb cb)
