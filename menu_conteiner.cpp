@@ -15,15 +15,15 @@ Screen(c)
   }
 
   m_n_of_lines = node->numChildren;
-  Serial.print("Nlines:");
-  Serial.println(m_n_of_lines);
+  //Serial.print("Nlines:");
+  //Serial.println(m_n_of_lines);
 
   for(uint8_t i=0 ; i < m_n_of_lines; i++)
   {
     Node<MenuNode> * child = node->children[i];
     if(child)
     {
-      Serial.println("Add line");
+      //Serial.println("Add line");
       LiquidLine * line = new LiquidLine(1,i%2,(const char (&)[1])(*child->data->name));
       line->set_asProgmem(1);
       line->attach_function(1, stub);
@@ -122,8 +122,8 @@ bool ContainerScreen::ev_confirm_pressed()
    
   if (tag)
   {
-    Serial.print("tag:");
-    Serial.print(tag);
+    //Serial.print("tag:");
+    //Serial.print(tag);
     m_controller.EnterChild(tag);
   }
 

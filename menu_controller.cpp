@@ -68,8 +68,6 @@ bool MenuController::Enter(const char* url)
 {
   Node<MenuNode> * node = m_services.pNavSys->navigateAbsoluteUrl(url);
   
-  Serial.print("url: ");
-  Serial.println(url);
   if((!node) || (!node->data) || (!node->data->factory))
   {
     Serial.println("node null");
@@ -86,7 +84,7 @@ bool MenuController::Enter(const char* url)
 
   if(m_current_screen)
   {
-    Serial.println("update screen");
+    //Serial.println("update screen");
     m_current_screen->update();
   } 
   else{

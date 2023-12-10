@@ -74,12 +74,12 @@ private:
       if (digitalRead(m_dt_pin) != m_clk_curr_st)
       {
         callback(CCW_CB);
-        Serial.print("[CCW]");
+        //Serial.print("[CCW]");
       }
       else
       {
         callback(CW_CB);
-        Serial.print("[CW]");
+        //Serial.print("[CW]");
       }
     }
     m_clk_last_st = m_clk_curr_st;
@@ -106,7 +106,7 @@ private:
         m_sw_state = SW_STATE_INIT;
         m_timer.stop();
         callback(SW_SP_CB);
-        Serial.print("[SP]");
+        //Serial.print("[SP]");
       }
 
       if(m_timer.update())
@@ -118,7 +118,7 @@ private:
     case SW_STATE_LONG_PRESS:
       m_sw_state = SW_STATE_INIT;
       callback(SW_LP_CB);
-      Serial.print("[LP]");
+      //Serial.print("[LP]");
       break;  
     
     default:

@@ -113,6 +113,9 @@ public:
     Node<T>* navigateAbsoluteUrl(const char* url) {
         if(!url){return nullptr;}
 
+        Serial.print("Go to: ");
+        Serial.println(url);
+
         bool release_url = false;
         // Remove trailing slash, if present
         int urlLen = strlen(url);
@@ -161,7 +164,8 @@ public:
             strcat(tempUrl, "/");
         }
         strncat(tempUrl, relativeUrl, MAX_URL_SIZE);
-        Serial.println(tempUrl);
+        //Serial.print("relativURL: ");
+        //Serial.println(tempUrl);
         return navigateAbsoluteUrl(tempUrl);
     }
 
@@ -170,8 +174,8 @@ public:
         char tempUrl[MAX_URL_SIZE];
         strncpy(tempUrl, currentUrl, MAX_URL_SIZE);
         url_remove_last_tag(tempUrl, MAX_URL_SIZE);
-        Serial.print("back URL:");
-        Serial.println(tempUrl);
+        //Serial.print("back URL:");
+        //Serial.println(tempUrl);
         return navigateAbsoluteUrl(tempUrl);
      }
 

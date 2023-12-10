@@ -57,14 +57,14 @@ static void cw_event_cb()
 
 static void sw_sp_event_cb()
 {
-    App_printFreeMemory();
     menu->TriggerEvent(Event::EV_CONFIRM_PRESSED);
+    App_printFreeMemory();
 }
 
 static void sw_lp_event_cb()
 {
-    App_printFreeMemory();
     menu->TriggerEvent(Event::EV_CANCEL_PRESSED);
+    App_printFreeMemory();
 }
 
 
