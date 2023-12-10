@@ -2,6 +2,7 @@
 #define __SCREEN_FACTORY_HPP__
 
 #include "menu_time.hpp"
+#include "menu_week.hpp"
 #include "menu_container.hpp"
 
 
@@ -14,9 +15,9 @@ public:
         screen = new ContainerScreen(c);
     }
 
-    //ScreenWrapper(Services* services, WeekModel* controller) {
-    //    screen = new WeekTimerScreen(services, controller);
-    //}
+    ScreenWrapper(MenuController &c, WeekModel* m) {
+        screen = new WeekTimerScreen(c, *m);
+    }
 
     ScreenWrapper(MenuController &c, TimeModel *m) {
         screen = new TimeScreen(c, *m);

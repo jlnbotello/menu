@@ -10,10 +10,9 @@ class WeekTimerScreen : public Screen
 {
 public:  
   WeekTimerScreen(MenuController &c, WeekModel &w);
-  ~WeekTimerScreen() override;
+  ~WeekTimerScreen();
   bool enter();
   bool exit();
-  bool update();
   bool onEvent(Event event);
 
 private:

@@ -22,10 +22,12 @@ static Selector selector(CLK_PIN, DT_PIN, SW_PIN);
 
 
 TimeModel timer1(10, 55);
-//TimeModel timer2(90, 10);
+TimeModel timer2(90, 10);
+WeekModel weekModel;
 
 ScreenFactory<TimeModel> t1sf(&timer1);
-//ScreenFactory<TimeModel> t2sf(&timer2);
+ScreenFactory<TimeModel> t2sf(&timer2);
+ScreenFactory<WeekModel> weeksf(&weekModel);
 
 
 const char home_fstr[] PROGMEM = "HOME";
@@ -73,9 +75,11 @@ void setup() {
   //menu->AddContainer("/home/t1", timer1_fstr);
   //menu->AddScreen("/home/t1/week", week_fstr, new WeekTimerScreen(services));
   menu->AddScreen("/home/t1", timer1_fstr, t1sf.factory());
+  menu->AddScreen("/home/t2", timer2_fstr, t2sf.factory());
   //menu->AddContainer("/home/t2", timer2_fstr);  
   //menu->AddScreen("/home/t2/week", week_fstr, new WeekTimerScreen(services));
-  //menu->AddScreen("/home/t2", timer2_fstr, t2sf.factory()); 
+  //menu->AddScreen("/home/t2", timer2_fstr, t2sf.factory());
+  menu->AddScreen("/home/week", week_fstr, weeksf.factory()); 
 
   print_free_memory(); 
 
@@ -88,6 +92,7 @@ void loop()
 {
   selector.run();
   timer1.update();
+  timer2.update();
   menu->TriggerEvent(Event::EV_UPDATE_LOOP);
 }
 

@@ -12,7 +12,8 @@ public:
         Thursday,
         Friday,
         Saturday,
-        Sunday
+        Sunday,
+        AllDays
     };
 
     WeekModel() : weekMask(0) {}
