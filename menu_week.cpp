@@ -56,10 +56,15 @@ private:
 
     Options options = {0};
     Services &services;
+
+    bool on_init = true;
+    bool show_cursor = true;
 };
 
 WeekUI::WeekUI(Services &s, WeekModel &week, int cursor) : services(s), weekModel(week), cursor(cursor), lastCursor(cursor)
 {
+    blinkTimer = noDelay(500);
+
     s0 = services.pCCM->LockSlot();
     s1 = services.pCCM->LockSlot();
 
@@ -120,12 +125,8 @@ void WeekUI::decrementCursor()
 
 bool WeekUI::blinkCursor()
 {
-    static bool on_init = true;
-    static bool show_cursor = true;
-
     if (on_init)
     {
-        blinkTimer.setdelay(500);
         blinkTimer.start();
         on_init = false;
     }
