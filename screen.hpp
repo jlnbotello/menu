@@ -15,7 +15,7 @@ public:
     m_menu->add_screen(*(new LiquidScreen()));
   };
 
-  ~Screen()
+  virtual ~Screen()
   {
     delete (m_menu);
   }

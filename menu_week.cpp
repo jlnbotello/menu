@@ -71,10 +71,7 @@ WeekUI::WeekUI(Services &s, WeekModel &week, int cursor) : services(s), weekMode
     selectChar = SET_CCHAR_SLOT(s0, CC_CHECK);
     cursorChar = SET_CCHAR_SLOT(s1, CC_ALIEN);
 
-    for (size_t i = 0; i < 8; i++)
-    {
-        options.table[i] = WEEK_EMPTY_CHAR;
-    }
+    update();
 }
 
 WeekUI::~WeekUI()
@@ -216,6 +213,7 @@ WeekTimerScreen::WeekTimerScreen(MenuController &c, WeekModel &w) : Screen(c)
 
 WeekTimerScreen::~WeekTimerScreen()
 {
+    Screen::~Screen(); // delete LiquidLine instances
     delete (ui);
 }
 

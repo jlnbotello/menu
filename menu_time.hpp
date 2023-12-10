@@ -8,6 +8,7 @@ class TimeScreen : public Screen
 {
 public:  
   TimeScreen(MenuController &c, TimeModel &m);
+  ~TimeScreen() override;
   bool onEvent(Event event);
 
 private:

@@ -25,6 +25,11 @@ TimeScreen::TimeScreen(MenuController &c, TimeModel &m) : timer(m), Screen(c)
   addLine(pSS);
 }
 
+TimeScreen::~TimeScreen()
+{
+  Screen::~Screen(); // delete LiquidLine instances
+}
+
 bool TimeScreen::onEvent(Event event)
 {
   switch (event)
