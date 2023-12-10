@@ -11,7 +11,7 @@
 */
 #define CCM_MAX_SLOTS 5
 
-#define SET_CCHAR_SLOT(slot, cchar) slot ? slot->SetChar(cchar) : ' '
+#define SET_CCHAR_SLOT(slot, cchar) slot ? slot->SetChar(cchar) : '#'
 
 class CustomCharManager;
 
