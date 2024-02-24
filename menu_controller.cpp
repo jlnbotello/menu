@@ -85,7 +85,7 @@ bool MenuController::Enter(const char* url)
   if(m_current_screen)
   {
     //Serial.println("update screen");
-    m_current_screen->update();
+    m_current_screen->updateAll();
   } 
   else{
     Serial.println("no screen");
@@ -114,7 +114,7 @@ bool MenuController::EnterChild(const char* tag)
 
   if(m_current_screen)
   {
-    m_current_screen->update();
+    m_current_screen->updateAll();
   }  
 }
 
@@ -138,7 +138,7 @@ bool MenuController::Back()
 
   if(m_current_screen)
   {
-    m_current_screen->update();
+    m_current_screen->updateAll();
   }
 
   return false;  

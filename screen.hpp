@@ -24,6 +24,11 @@ public:
 
   void update()
   {
+    m_menu->softUpdate();
+  };
+
+    void updateAll()
+  {
     m_menu->update();
   };
 
