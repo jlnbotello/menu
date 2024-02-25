@@ -31,7 +31,7 @@ MenuController::MenuController(DisplayClass &lcd)
   m_container_sfi = sf->factory();
 }
 
-void MenuController::AddScreen(const char* url, const char* name, ScreenFactoryInterface * sfi)
+void MenuController::AddCustomScreen(const char* url, const char* name, ScreenFactoryInterface * sfi)
 {
   if(url && name && sfi)
   {
@@ -56,6 +56,18 @@ void MenuController::AddContainer(const char* url, const char* name)
       pNode->factory = m_container_sfi;
       m_services.pNavSys->addNode(url, pNode);
     }
+  }
+}
+
+void MenuController::AddScreen(const char* url, const ScreenHandler & screen)
+{
+  if(screen.factory == NULL)
+  {
+    AddContainer(url, screen.title);
+  }
+  else
+  {
+    AddCustomScreen(url, screen.title, screen.factory);
   }
 }
 

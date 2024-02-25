@@ -37,11 +37,10 @@ static ScreenFactory<TimeModel> t1sf(&timer1);
 static ScreenFactory<TimeModel> t2sf(&timer2);
 static ScreenFactory<WeekModel> weeksf(&weekModel);
 
-static const char home_fstr[] PROGMEM = "HOME";
-static const char week_fstr[] PROGMEM = "WEEK";
-static const char time_fstr[] PROGMEM = "TIME";
-static const char timer1_fstr[] PROGMEM = "TIMER 1";
-static const char timer2_fstr[] PROGMEM = "TIMER 2";
+CREATE_SCREEN(screen_home   , "HOME"    , NULL);
+CREATE_SCREEN(screen_t1     , "TIMER 1" , &t1sf);
+CREATE_SCREEN(screen_t2     , "TIMER 2" , &t2sf);
+CREATE_SCREEN(screen_week   , "WEEK"    , &weeksf);
 
 /*---------------------------------[PRIVATE FUNCTIONS]------------------------*/
 
@@ -83,10 +82,10 @@ void App_setup()
 
     menu = new MenuController(lcd);
 
-    menu->AddContainer("/home", home_fstr);
-    menu->AddScreen("/home/t1", timer1_fstr, t1sf.factory());
-    menu->AddScreen("/home/t2", timer2_fstr, t2sf.factory());
-    menu->AddScreen("/home/week", week_fstr, weeksf.factory());
+    menu->AddScreen("/home"         , screen_home);
+    menu->AddScreen("/home/t1"      , screen_t1);
+    menu->AddScreen("/home/t2"      , screen_t2);
+    menu->AddScreen("/home/week"    , screen_week);    
 
     menu->Enter("/home");
     
