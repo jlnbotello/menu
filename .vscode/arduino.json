@@ -1,0 +1,12 @@
+{
+    "board": "arduino:avr:uno",
+    "buildPreferences": [
+        [
+            "compiler.cpp.extra_flags",
+            "-Isrc/app -Isrc/drivers -Isrc/lib -Isrc/models -Isrc/screens"
+        ]
+    ],
+    "port": "COM3",
+    "sketch": "menu.ino",
+    "output": "build"
+}

@@ -1,8 +1,5 @@
 #include <Arduino.h>
-#include <avr/pgmspace.h>
-#include "MemoryFree.h"
-
-#include "app.hpp"
+#include "src/app/app.h"
 
 void setup()
 {
