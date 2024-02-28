@@ -4,6 +4,7 @@
 #include "TimeScreen.h"
 #include "WeekScreen.h"
 #include "ContainerScreen.h"
+#include "InfoScreen.h"
 
 
 
@@ -21,6 +22,10 @@ public:
 
     ScreenWrapper(MenuController &c, TimeModel *m) {
         screen = new TimeScreen(c, *m);
+    }
+
+    ScreenWrapper(MenuController &c, InfoModel *m) {
+        screen = new InfoScreen(c, *m);
     }
 
     /* Add more constuctor here */

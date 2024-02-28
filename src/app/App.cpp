@@ -30,17 +30,20 @@ static Selector selector(CLK_PIN, DT_PIN, SW_PIN);
 static TimeModel timer1(10, 55);
 static TimeModel timer2(90, 10);
 static WeekModel weekModel;
+static InfoModel infoModel;
 
 static ScreenFactory<TimeModel> t1sf(&timer1);
 static ScreenFactory<TimeModel> t2sf(&timer2);
 static ScreenFactory<WeekModel> weeksf(&weekModel);
+static ScreenFactory<InfoModel> infosf(&infoModel);
 
 CREATE_SCREEN(screen_home   , "HOME"        , NULL);
 CREATE_SCREEN(screen_p1     , "PUMP 1"      , NULL);
 CREATE_SCREEN(screen_p2     , "PUMP 2"      , NULL);
-CREATE_SCREEN(screen_t1     , "On time"    , &t1sf);
-CREATE_SCREEN(screen_t2     , "Off time"   , &t2sf);
+CREATE_SCREEN(screen_t1     , "On time"     , &t1sf);
+CREATE_SCREEN(screen_t2     , "Off time"    , &t2sf);
 CREATE_SCREEN(screen_week   , "Select days" , &weeksf);
+CREATE_SCREEN(screen_info   , "INFO"        , &infosf);
 
 /*---------------------------------[PRIVATE FUNCTIONS]------------------------*/
 
@@ -91,6 +94,7 @@ void App_setup()
     menu->AddScreen("/home/p2/week"     , screen_week);
     menu->AddScreen("/home/p2/t_on"     , screen_t1);
     menu->AddScreen("/home/p2/t_off"    , screen_t2);
+    menu->AddScreen("/home/info"        , screen_info);
 
     menu->Enter("/home");
     
