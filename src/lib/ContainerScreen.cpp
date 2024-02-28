@@ -24,7 +24,7 @@ Screen(c)
     if(child)
     {
       //Serial.println("Add line");
-      LiquidLine * line = new LiquidLine(1,i%2,(const char (&)[1])(*child->data->name));
+      LiquidLine * line = new LiquidLine(1, i,(const char (&)[1])(*child->data->name));
       line->set_asProgmem(1);
       line->attach_function(1, stub);
       addLine(line);      
@@ -34,7 +34,7 @@ Screen(c)
     }
   }
 
-  m_menu->get_currentScreen()->set_displayLineCount(2);
+  m_menu->get_currentScreen()->set_displayLineCount(2); // TODO: create a macro to define the display line count
   m_menu->get_currentScreen()->set_focusPosition(Position::LEFT);
   m_menu->set_focusedLine(m_focused_line);
   update();
